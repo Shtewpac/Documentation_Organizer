@@ -289,26 +289,30 @@ class GPTProcessor:
             # Debug the raw response
             logger.debug(f"Raw completion response: {completion}")
             
-            # Check for refusals or empty responses
+            # Check for empty response
             if not completion or not completion.choices:
                 logger.error(f"Empty completion response for section '{title}'")
                 return None
-                
+
+            # Get the message and check if it contains the parsed data
             message = completion.choices[0].message
-            if hasattr(message, 'refusal'):
+            
+            # Check for explicit refusal
+            if hasattr(message, 'refusal') and message.refusal:
                 logger.warning(
                     f"Model refused to process section '{title}': {message.refusal}"
                 )
                 return None
-            
-            # Debug the parsed result
-            result = message.parsed.dict() if hasattr(message, 'parsed') else None
-            if result:
+
+            # Access the parsed data directly from the message
+            if hasattr(message, 'parsed'):
+                result = message.parsed.dict()
                 logger.debug(f"Parsed result: {result}")
+                logger.info(f"Successfully processed section '{title}' -> {result['filename']}")
+                return result
             else:
-                logger.error(f"Failed to parse completion response for section '{title}'")
-            
-            return result
+                logger.error(f"No parsed data found in response for section '{title}'")
+                return None
 
         except Exception as e:
             logger.error(
@@ -533,7 +537,7 @@ def main():
         return
 
     # Example usage
-    input_file = r"C:\Users\WilliamKraft\Documents\Coding Projects\Documentation_Organizer\example_documentation\alpha_vantage\Alpha X Data Governance.html"
+    input_file = r"C:\Users\WilliamKraft\Documents\Coding Projects\Documentation_Organizer\example_documentation\alpha_vantage\API Documentation _ Alpha Vantage.html"
     output_dir = r"C:\Users\WilliamKraft\Documents\Coding Projects\Documentation_Organizer\example_documentation\alpha_vantage\organized"
 
     organizer = DocumentationOrganizer(output_dir)
