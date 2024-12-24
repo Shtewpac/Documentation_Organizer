@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Alpha X - Terminal by Alpha Vantage Inc.">
+
+    <title>Alpha X Data Governance</title>
+
+    <!-- Scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="/static/scripts/theDocs.all.min.js" type="text/javascript"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FQEDGD32JV"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-FQEDGD32JV');
+    </script>
+
+    <!-- Styles -->
+    <link href="/static/css/theDocs.all.min.css" rel="stylesheet">
+    <link href="/static/css/custom.css" rel="stylesheet">
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Raleway:100,300,400,500%7CLato:300,400' rel='stylesheet' type='text/css'>
+
+    <!-- Favicons -->
+    <link rel="icon" href="/static/img/favicon.ico">
+  </head>
+
+  <body data-spy="scroll" data-target=".sidebar" data-offset="200">
+
+
+    <!-- Sidebar -->
+    <aside class="sidebar sidebar-boxed sidebar-dark">
+
+      <ul class="nav sidenav">
+        <li id="support-page-top"><a href="#">Alpha X Data Governance</a>
+        <li>
+          <a href="#account-information">Account Information</a>
+        </li>
+        <li>
+          <a href="#entitlements">Data Entitlements</a>
+        </li>
+
+        <li>
+          <a href="#alphax-terms">Alpha X Data Terms</a>
+        </li>
+      </ul>
+
+    </aside>
+    <!-- END Sidebar -->
+
+
+    <header class="site-header navbar-transparent">
+
+      <!-- Top navbar & branding -->
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+
+          <!-- Toggle buttons and brand -->
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar" aria-expanded="true" aria-controls="navbar">
+              <span class="glyphicon glyphicon-option-vertical"></span>
+            </button>
+
+            <button type="button" class="navbar-toggle for-sidebar" data-toggle="offcanvas">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+          </div>
+          <!-- END Toggle buttons and brand -->
+
+          <!-- Top navbar -->
+          <div id="navbar" class="navbar-collapse collapse" aria-expanded="true" role="banner">
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="https://www.alphavantage.co/" target="_blank">Alpha Vantage Home</a></li>
+              <li><a href="https://www.alphavantage.co/alphax/" target="_blank">Alpha X Terminal</a></li>
+              <li><a href="/accounts/logout/">Logout</a></li>
+            </ul>
+          </div>
+          <!-- END Top navbar -->
+
+        </div>
+      </nav>
+      <!-- END Top navbar & branding -->
+
+      <!-- Banner -->
+      <div class="banner auto-size" style="background-color: #5cc7b2">
+        <div class="container-fluid text-white">
+          <h1><strong>Alpha X</strong> Data Management Portal</h1>
+        </div>
+      </div>
+      <!-- END Banner -->
+
+    </header>
+
+    <main class="container-fluid">
+      <!-- Main content -->
+      <article class="main-content" role="main">
+        <script id="username" type="application/json">"Shtewpac"</script>
+          <script id="email" type="application/json">"wpkfilms@gmail.com"</script>
+        <script id="entitlement" type="application/json">"delayed"</script>
+          <script id="verified" type="application/json">"yes"</script>
+        <script id="hasName" type="application/json">"yes"</script>
+        <script id="hasAddress" type="application/json">"yes"</script>
+
+        <section>
+          
+          <br>
+          <br>
+          <h4 id="entitlements">Data Entitlements</h4>
+          <div id="email-verify-div">
+              <p>Please enter your email verification code to proceed with realtime and 15-minute delayed US market data entitlements (if you didn't receive the code, please check your inbox & spam folder or contact <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="7b080e0b0b14090f3b1a170b131a0d1a150f1a1c1e551814">[email&#160;protected]</a>):</p>
+              <input type="text" id="emailcodestring" name="emailcodestring">
+              <button type="button" id="emailcode-btn">Submit</button>
+          </div>
+          <br>
+          <p id="email-code-message" hidden></p>
+          <br>
+          <div id="key-div">
+              <p><u>Enter your premium API key below to proceed with data entitlements</u>. Don't have a premium API key? <a href="https://www.alphavantage.co/premium/" target="_blank">Subscribe here</a>! By continuing with the data entitlement process below, you agree to the <a href="#alphax-terms">Alpha X Terms</a> below and certify that you are using Alpha X Data for personal display purposes only. Redistribution of Alpha X Data is strictly prohibited. If you would like to access realtime or 15-minute delayed US stock market data for professional or commercial purposes, we offer dedicated subscription plans for them. Please <a href="/cdn-cgi/l/email-protection#f685838686998482b6979a869e9780979882979193d89599">contact us</a> instead of proceeding here.</p>
+              <input type="text" id="keystring" name="keystring" placeholder="your premium API key">
+              <button type="button" id="key-btn">Submit</button>
+          </div>
+          <br>
+          <p id="key-message" hidden></p>
+          <br>
+          <br>
+          <p>15-minute Delayed US Stock Market Data: <span id="delayed-entilement-status" style="color:orange">not enabled</span></p>
+          <p id="delayed-docs" hidden>
+            To access 15-minute delayed US stock market data, please append <code>entitlement=delayed</code> to the data request. For example:
+            <br>
+            <code>https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=IBM&interval=5min&<b>entitlement=delayed</b>&apikey=<span class="key-field">P1GN9YGK3JZRCP17</span></code>
+            <br>
+            <br>
+            <code>https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=IBM&<b>entitlement=delayed</b>&apikey=<span class="key-field">P1GN9YGK3JZRCP17</span></code>
+            <br>
+            <br>
+            <code>https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=IBM&outputsize=full&<b>entitlement=delayed</b>&apikey=<span class="key-field">P1GN9YGK3JZRCP17</span></code>
+            <br>
+            <br>
+            💡Tip: you can also access 15-minute delayed technical indicators with similar URL configurations:<br>
+            <code>https://www.alphavantage.co/query?function=SMA&symbol=IBM&interval=5min&time_period=10&series_type=close&<b>entitlement=delayed</b>&apikey=<span class="key-field">P1GN9YGK3JZRCP17</span></code>
+          </p>
+          <br>
+          <p>Realtime US Stock Market Data: <span id="realtime-entilement-status" style="color:orange">not enabled</span></p>
+          <p id="realtime-blocked-msg" hidden>💡Realtime US market data is available to premium subscribers on our 150, 300, 600, or 1200 requests per minute plans. Please <a href="https://www.alphavantage.co/upgrade_subscription/" target="_blank">use this page</a> to upgrade your plan right away.</p>
+          <p id="realtime-prequal-msg" hidden>Per NASDAQ policy, please review and sign the Exchange Agreement below to complete your entitlement for realtime US stock market data. You may also <a href="http://www.nasdaqtrader.com/content/AdministrationSupport/AgreementsData/subagreemstandalone.pdf" target="_blank">download</a> the full agreement from the official NASDAQ website.</p>
+          <iframe id="exchange-agreement" src="https://docs.google.com/document/d/e/2PACX-1vRHCpt3pH_8MMVodLeXlkT9tQpBXFaIYiQQFpuhge4P_16hm9cHVe8kcmu3mqVjIBoQJ-dGIdJ3Ab0e/pub?embedded=true" width="100%" height="400px" hidden></iframe>
+          <p id="realtime-signing-instructions" hidden>You hereby accept the above Exchange Agreement as well as the <a href="#alphax-terms">Alpha X Data Terms</a> and certify that you are using Alpha X Data for personal display purposes only. Redistribution of Alpha X Data is strictly prohibited. If you would like to access realtime or 15-minute delayed US stock market data for <u>professional or commercial</u> purposes, we offer dedicated subscription plans for them. Please <a href="/cdn-cgi/l/email-protection#1b686e6b6b74696f5b7a776b737a6d7a756f7a7c7e357874">contact us</a> instead of signing the agreement here. <br></p>
+          <input type="text" id="realtime-sign" name="realtime-sign" placeholder="Enter full name" hidden>
+          <button type="button" id="sign-btn" hidden>Sign</button>
+          <p id="realtime_docs" hidden>
+            To access realtime US stock market data, please append <code>entitlement=realtime</code> to the data request. For example:
+            <br>
+            <code>https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=IBM&interval=5min&<b>entitlement=realtime</b>&apikey=<span class="key-field">P1GN9YGK3JZRCP17</span></code>
+            <br>
+            <br>
+            <code>https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=IBM&<b>entitlement=realtime</b>&apikey=<span class="key-field">P1GN9YGK3JZRCP17</span></code>
+            <br>
+            <br>
+            <code>https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=IBM&outputsize=full&<b>entitlement=realtime</b>&apikey=<span class="key-field">P1GN9YGK3JZRCP17</span></code>
+            <br>
+            <br>
+            💡Tip: you can also access realtime technical indicators with similar URL configurations:<br>
+            <code>https://www.alphavantage.co/query?function=SMA&symbol=IBM&interval=5min&time_period=10&series_type=close&<b>entitlement=realtime</b>&apikey=<span class="key-field">P1GN9YGK3JZRCP17</span></code>
+              <br>
+              <br>
+            ❗IMPORTANT: if your subscription plan is also eligible for realtime US options data, please set up your options data entitlements <a href="https://www.alphavantage.co/alphax_options_data/" target="_blank">here</a>.<br>
+          </p>
+          <br>
+          <br>
+          <br>
+          <br>
+
+          <h4 id="alphax-terms">Alpha X Data Terms</h4>
+          <p>Realtime and 15-minute delayed US stock market data powered by NASDAQ Basic NLS Plus&copy;</p>
+          <p>"Alpha X Data" means the ability to view stock market data with the additional flexibility of Application Programming Interfaces (APIs). <u>Your use of Alpha X Terminal and Alpha X Data shall be for personal display purposes only</u>. Redistribution of data using Alpha X Data APIs is strictly prohibited. You may not distribute or display Alpha X data to any other person or entity. Misuse of Alpha X Data may cause you to be assessed fees and/or penalties from the NASDAQ Stock Exchange.</p>
+          <p>You also certify that: </p>
+          <p>❚ You are NOT using Alpha X Data as or on behalf of a corporation, firm, partnership, trust, investment advisor, regulatory body, securities exchange, or any other association.</p>
+          <p>❚ You will NOT provide information accessed through Alpha X Data as part of any type of commercial activity that allows individuals or entities other than yourself to access information directly or indirectly even if the scope of such activity falls outside of the securities industry.</p>
+          <p>Alpha Vantage implements strict protocols for maintaining individual-natured Alpha X Data access. Alpha Vantage reserves the right to suspend your Alpha X Data entitlements due to inaccurate/invalid user credentials, excess data usage, or other applicable patterns of non-compliance.</p>
+          <p><span style="color:darkblue">If you need realtime or 15-minute delayed US stock market data beyond the personal usage terms above, please <a href="/cdn-cgi/l/email-protection#becdcbceced1cccafedfd2ced6dfc8dfd0cadfd9db90ddd1" target="_blank">contact us</a> for our business and enterprise data plans instead.</span></p>
+
+        </section>
+      </article>
+      <!-- END Main content -->
+    </main>
+
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="container-fluid">
+        <a id="scroll-up" href="#"><i class="fa fa-angle-up"></i></a>
+
+        <div class="row">
+          <div class="col-md-6 col-sm-6">
+            <p>Copyright &copy; Alpha Vantage Inc. 2017-2024</p>
+          </div>
+          <div class="col-md-6 col-sm-6">
+            <ul class="footer-menu">
+              <li><a href="https://www.alphavantage.co/terms_of_service/" target="_blank">Terms of Service</a></li>
+              <li><a href="https://www.alphavantage.co/privacy/" target="_blank">Privacy Policy</a></li>
+              <li><a href="/cdn-cgi/l/email-protection#bccfc9ccccd3cec8fcddd0ccd4ddcaddd2c8dddbd992dfd3">Contact us</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- END Footer -->
+
+
+
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+
+  <script>
+         $("#key-btn").click(function() {
+             var apikey = $("#keystring").val();
+             const username = JSON.parse(document.getElementById('username').textContent);
+
+             $.ajax({
+                 type: "POST",
+                 url: "/initiate_entitlement/",
+                 data: {
+                     'apikey': apikey,
+                     'username': username,
+
+                 },
+                 success: function (res, status) {
+
+                     var result = String(res['result']);
+
+                     if (result === 'ff'){
+                         $('#key-message').text('The key you entered is not qualified for Alpha X Data entitlements or has already been linked to another account. Please try another API key or contact support@alphavantage.co');
+                         $('#key-message').show();
+                     }
+                     if (result === 'tf'){
+                         $("#key-div").hide();
+                         $("#delayed-entilement-status").css("color", "green").text('Enabled');
+                         $("#delayed-docs").show();
+                         $(".key-field").text(apikey);
+                         $("#realtime-blocked-msg").show();
+                     }
+
+                     if (result === 'tt'){
+                         $("#key-div").hide();
+                         $("#delayed-entilement-status").css("color", "green").text('Enabled');
+                         $("#delayed-docs").show();
+                         $(".key-field").text(apikey);
+                         $('#realtime-prequal-msg').show();
+                         $('#exchange-agreement').show();
+                         $('#realtime-signing-instructions').show();
+                         $('#realtime-sign').show();
+                         $('#sign-btn').show();
+                     }
+
+                 }
+             })
+         });
+
+         $("#nameString-btn").click(function() {
+             const username = JSON.parse(document.getElementById('username').textContent);
+             var nameString = $("#nameString").val();
+             var addressString = $("#addressString").val();
+             var cityString = $("#cityString").val();
+             var stateString = $("#stateString").val();
+             var postalString = $("#postalString").val();
+             var countryString = $("#countryString").val();
+
+             if (nameString.trim() === '') {
+                 return
+             }
+
+             if (addressString.trim() === '') {
+                 return
+             }
+
+             if (cityString.trim() === '') {
+                 return
+             }
+
+             if (stateString.trim() === '') {
+                 return
+             }
+
+             if (postalString.trim() === '') {
+                 return
+             }
+
+             if (countryString.trim() === '') {
+                 return
+             }
+
+             $.ajax({
+                 type: "POST",
+                 url: "/submit_name_address/",
+                 data: {
+                     'username': username,
+                     'name': nameString,
+                     'address': addressString,
+                     'city': cityString,
+                     'state': stateString,
+                     'postal': postalString,
+                     'country': countryString,
+                 },
+                 success: function (res, status) {
+
+                     var result = String(res['result']);
+
+                     if (result === 'failed'){
+                         $('#name-address-submit-message').text('Invalid or duplicate input. Please refresh page & try again or contact support@alphavantage.co');
+                         $('#name-address-submit-message').show();
+                     }
+                     if (result === 'success'){
+                         $('#name-address-submit-message').text('Submission successful! Please refresh page and proceed with the data entitlement process below.');
+                         $('#name-address-submit-message').show();
+                     }
+                 }
+             })
+         });
+
+
+         $("#emailcode-btn").click(function() {
+             var emailcodestring = $("#emailcodestring").val();
+             const username = JSON.parse(document.getElementById('username').textContent);
+             const email = JSON.parse(document.getElementById('email').textContent);
+
+             $.ajax({
+                 type: "POST",
+                 url: "/verify_email/",
+                 data: {
+                     'code': emailcodestring,
+                     'username': username,
+                     'email': email,
+
+                 },
+                 success: function (res, status) {
+
+                     var result = String(res['result']);
+
+                     if (result === 'failed'){
+                         $('#email-code-message').text('Wrong verification code OR missing name/address information above. Please try again or contact support@alphavantage.co');
+                         $('#email-code-message').show();
+                     }
+                     if (result === 'success'){
+                         $('#email-code-message').text('Email verified! Please proceed with the data entitlement process below.');
+                         $('#email-code-message').show();
+                         $("#email-verify-div").hide();
+                         $("#key-div").show();
+                     }
+                 }
+             })
+         });
+
+
+          $("#sign-btn").click(function() {
+              var signedname = $("#realtime-sign").val();
+             const username = JSON.parse(document.getElementById('username').textContent);
+
+             $.ajax({
+                 type: "POST",
+                 url: "/sign_agreement/",
+                 data: {
+                     'username': username,
+                     'signedname': signedname,
+
+                 },
+                 success: function (res, status) {
+
+                     var result = String(res['result']);
+
+                     if (result === 'accepted'){
+                         $('#realtime-prequal-msg').hide();
+                         $('#exchange-agreement').hide();
+                         $('#realtime-signing-instructions').hide();
+                         $('#realtime-sign').hide();
+                         $('#sign-btn').hide();
+                         $("#realtime-entilement-status").css("color", "green").text('Enabled');
+                         $('#realtime_docs').show();
+                     }
+
+                 }
+             })
+         });
+
+         const entitlement = JSON.parse(document.getElementById('entitlement').textContent);
+         const verified = JSON.parse(document.getElementById('verified').textContent);
+
+         if (entitlement === 'both') {
+              $("#key-div").hide();
+               $("#delayed-entilement-status").css("color", "green").text('Enabled');
+               $("#delayed-docs").show();
+              $("#realtime-entilement-status").css("color", "green").text('Enabled');
+               $("#realtime_docs").show();
+         }
+
+         if (entitlement === 'pending') {
+                $("#key-div").hide();
+               $("#delayed-entilement-status").css("color", "green").text('Enabled');
+               $("#delayed-docs").show();
+               $('#realtime-prequal-msg').show();
+               $('#exchange-agreement').show();
+               $('#realtime-signing-instructions').show();
+               $('#realtime-sign').show();
+               $('#sign-btn').show();
+         }
+
+         if (entitlement === 'delayed') {
+                $("#key-div").hide();
+               $("#delayed-entilement-status").css("color", "green").text('Enabled');
+               $("#delayed-docs").show();
+               $("#realtime-blocked-msg").show();
+         }
+
+         if (verified === 'no') {
+             $("#email-verify-div").show();
+             $("#key-div").hide();
+         } else {
+             $("#email-verify-div").hide();
+         }
+
+  </script>
+</html>
